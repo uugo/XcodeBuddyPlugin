@@ -15,7 +15,6 @@
 		B72E14061CACE583006F9A52 /* CommContent.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E13F91CACE583006F9A52 /* CommContent.m */; };
 		B72E14071CACE583006F9A52 /* ConnectAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E13FB1CACE583006F9A52 /* ConnectAlert.m */; };
 		B72E14081CACE583006F9A52 /* DVTUserNotificationCenter+XcodeBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E13FD1CACE583006F9A52 /* DVTUserNotificationCenter+XcodeBuddy.m */; };
-		B72E14091CACE583006F9A52 /* IDEStructureNavigator+XcodeBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E13FF1CACE583006F9A52 /* IDEStructureNavigator+XcodeBuddy.m */; };
 		B72E140A1CACE583006F9A52 /* NSObject_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14011CACE583006F9A52 /* NSObject_Extension.m */; };
 		B72E140B1CACE583006F9A52 /* XcodeTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14041CACE583006F9A52 /* XcodeTheme.m */; };
 		B72E141A1CACE592006F9A52 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14111CACE592006F9A52 /* GCDAsyncSocket.m */; };
@@ -43,8 +42,6 @@
 		B72E13FB1CACE583006F9A52 /* ConnectAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectAlert.m; sourceTree = "<group>"; };
 		B72E13FC1CACE583006F9A52 /* DVTUserNotificationCenter+XcodeBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DVTUserNotificationCenter+XcodeBuddy.h"; sourceTree = "<group>"; };
 		B72E13FD1CACE583006F9A52 /* DVTUserNotificationCenter+XcodeBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DVTUserNotificationCenter+XcodeBuddy.m"; sourceTree = "<group>"; };
-		B72E13FE1CACE583006F9A52 /* IDEStructureNavigator+XcodeBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IDEStructureNavigator+XcodeBuddy.h"; sourceTree = "<group>"; };
-		B72E13FF1CACE583006F9A52 /* IDEStructureNavigator+XcodeBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IDEStructureNavigator+XcodeBuddy.m"; sourceTree = "<group>"; };
 		B72E14001CACE583006F9A52 /* NSObject_Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObject_Extension.h; sourceTree = "<group>"; };
 		B72E14011CACE583006F9A52 /* NSObject_Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObject_Extension.m; sourceTree = "<group>"; };
 		B72E14021CACE583006F9A52 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
@@ -145,8 +142,6 @@
 				B72E13FB1CACE583006F9A52 /* ConnectAlert.m */,
 				B72E13FC1CACE583006F9A52 /* DVTUserNotificationCenter+XcodeBuddy.h */,
 				B72E13FD1CACE583006F9A52 /* DVTUserNotificationCenter+XcodeBuddy.m */,
-				B72E13FE1CACE583006F9A52 /* IDEStructureNavigator+XcodeBuddy.h */,
-				B72E13FF1CACE583006F9A52 /* IDEStructureNavigator+XcodeBuddy.m */,
 				B72E14001CACE583006F9A52 /* NSObject_Extension.h */,
 				B72E14011CACE583006F9A52 /* NSObject_Extension.m */,
 				B72E14021CACE583006F9A52 /* Singleton.h */,
@@ -262,7 +257,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B72E13EB1CACE4B3006F9A52 /* XcodeBuddyPlugin.m in Sources */,
-				B72E14091CACE583006F9A52 /* IDEStructureNavigator+XcodeBuddy.m in Sources */,
 				B72E140A1CACE583006F9A52 /* NSObject_Extension.m in Sources */,
 				B72E14061CACE583006F9A52 /* CommContent.m in Sources */,
 				B72E14081CACE583006F9A52 /* DVTUserNotificationCenter+XcodeBuddy.m in Sources */,
@@ -409,6 +403,7 @@
 				B72E13F41CACE4B3006F9A52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
