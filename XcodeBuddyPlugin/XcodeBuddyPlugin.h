@@ -27,16 +27,7 @@ static XcodeBuddyPlugin *sharedPlugin;
 + (instancetype)sharedPlugin;
 - (id)initWithBundle:(NSBundle *)plugin;
 
-
-
-//@property (nonatomic, readonly) BOOL canOpenWithxcbuddy;
 @property (nonatomic,copy,readonly) NSString* WorkSpaceFilePath;
-//@property (nonatomic, strong, readonly) NSBundle *pluginBundle;
-//@property (nonatomic,strong)  GCDAsyncSocket* clientSocket;
-
-//@property (nonatomic, weak) NSMenuItem *menuOpenWithxcbuddy;
-//@property (nonatomic, weak) NSMenuItem *menuOpenWithExternalEditor;
-
 
 - (void)doConnectMenuAction;
 +(void) addToHostList:(NSString*) ip port:(UInt16)port;
