@@ -18,12 +18,12 @@
 		B72E140A1CACE583006F9A52 /* NSObject_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14011CACE583006F9A52 /* NSObject_Extension.m */; };
 		B72E140B1CACE583006F9A52 /* XcodeTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14041CACE583006F9A52 /* XcodeTheme.m */; };
 		B72E141A1CACE592006F9A52 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14111CACE592006F9A52 /* GCDAsyncSocket.m */; };
-		B72E141B1CACE592006F9A52 /* DeallocationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14141CACE592006F9A52 /* DeallocationObserver.m */; };
-		B72E141C1CACE592006F9A52 /* xcBuddyWeakObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14161CACE592006F9A52 /* xcBuddyWeakObjectWrapper.m */; };
-		B72E141D1CACE592006F9A52 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14191CACE592006F9A52 /* JRSwizzle.m */; };
-		B72E14221CACE59F006F9A52 /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72E141F1CACE59F006F9A52 /* DVTFoundation.framework */; };
 		B72E14231CACE59F006F9A52 /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72E14201CACE59F006F9A52 /* DVTKit.framework */; };
 		B72E14241CACE59F006F9A52 /* IDEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72E14211CACE59F006F9A52 /* IDEKit.framework */; };
+		B7B091571CAD7DDF00A74EE9 /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B091561CAD7DDF00A74EE9 /* DVTFoundation.framework */; };
+		B7B091601CAD7EB600A74EE9 /* DeallocationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0915A1CAD7EB600A74EE9 /* DeallocationObserver.m */; };
+		B7B091611CAD7EB600A74EE9 /* xcBuddyWeakObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0915C1CAD7EB600A74EE9 /* xcBuddyWeakObjectWrapper.m */; };
+		B7B091621CAD7EB600A74EE9 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0915F1CAD7EB600A74EE9 /* JRSwizzle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,15 +51,16 @@
 		B72E140E1CACE592006F9A52 /* XcodePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodePrivate.h; sourceTree = "<group>"; };
 		B72E14101CACE592006F9A52 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		B72E14111CACE592006F9A52 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		B72E14131CACE592006F9A52 /* DeallocationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeallocationObserver.h; sourceTree = "<group>"; };
-		B72E14141CACE592006F9A52 /* DeallocationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeallocationObserver.m; sourceTree = "<group>"; };
-		B72E14151CACE592006F9A52 /* xcBuddyWeakObjectWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcBuddyWeakObjectWrapper.h; sourceTree = "<group>"; };
-		B72E14161CACE592006F9A52 /* xcBuddyWeakObjectWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcBuddyWeakObjectWrapper.m; sourceTree = "<group>"; };
-		B72E14181CACE592006F9A52 /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
-		B72E14191CACE592006F9A52 /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
 		B72E141F1CACE59F006F9A52 /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = XcodeBuddyPlugin/Frameworks/DVTFoundation.framework; sourceTree = "<group>"; };
 		B72E14201CACE59F006F9A52 /* DVTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTKit.framework; path = XcodeBuddyPlugin/Frameworks/DVTKit.framework; sourceTree = "<group>"; };
 		B72E14211CACE59F006F9A52 /* IDEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEKit.framework; path = XcodeBuddyPlugin/Frameworks/IDEKit.framework; sourceTree = "<group>"; };
+		B7B091561CAD7DDF00A74EE9 /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework; sourceTree = "<group>"; };
+		B7B091591CAD7EB600A74EE9 /* DeallocationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeallocationObserver.h; sourceTree = "<group>"; };
+		B7B0915A1CAD7EB600A74EE9 /* DeallocationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeallocationObserver.m; sourceTree = "<group>"; };
+		B7B0915B1CAD7EB600A74EE9 /* xcBuddyWeakObjectWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = xcBuddyWeakObjectWrapper.h; sourceTree = "<group>"; };
+		B7B0915C1CAD7EB600A74EE9 /* xcBuddyWeakObjectWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcBuddyWeakObjectWrapper.m; sourceTree = "<group>"; };
+		B7B0915E1CAD7EB600A74EE9 /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
+		B7B0915F1CAD7EB600A74EE9 /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +71,8 @@
 				B72E13E21CACE4B3006F9A52 /* AppKit.framework in Frameworks */,
 				B72E13E41CACE4B3006F9A52 /* Foundation.framework in Frameworks */,
 				B72E14231CACE59F006F9A52 /* DVTKit.framework in Frameworks */,
-				B72E14221CACE59F006F9A52 /* DVTFoundation.framework in Frameworks */,
 				B72E14241CACE59F006F9A52 /* IDEKit.framework in Frameworks */,
+				B7B091571CAD7DDF00A74EE9 /* DVTFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +99,7 @@
 		B72E13E01CACE4B3006F9A52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B7B091561CAD7DDF00A74EE9 /* DVTFoundation.framework */,
 				B72E141F1CACE59F006F9A52 /* DVTFoundation.framework */,
 				B72E14201CACE59F006F9A52 /* DVTKit.framework */,
 				B72E14211CACE59F006F9A52 /* IDEKit.framework */,
@@ -110,10 +112,10 @@
 		B72E13E51CACE4B3006F9A52 /* XcodeBuddyPlugin */ = {
 			isa = PBXGroup;
 			children = (
+				B7B091581CAD7EB600A74EE9 /* Helper */,
+				B7B0915D1CAD7EB600A74EE9 /* JRSwizzle */,
 				B72E140C1CACE592006F9A52 /* XcodeHeaders */,
 				B72E140F1CACE592006F9A52 /* AsyncSocket */,
-				B72E14121CACE592006F9A52 /* Helper */,
-				B72E14171CACE592006F9A52 /* JRSwizzle */,
 				B72E13F51CACE583006F9A52 /* Classes */,
 				B72E13E91CACE4B3006F9A52 /* XcodeBuddyPlugin.h */,
 				B72E13EA1CACE4B3006F9A52 /* XcodeBuddyPlugin.m */,
@@ -169,22 +171,22 @@
 			path = AsyncSocket;
 			sourceTree = "<group>";
 		};
-		B72E14121CACE592006F9A52 /* Helper */ = {
+		B7B091581CAD7EB600A74EE9 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				B72E14131CACE592006F9A52 /* DeallocationObserver.h */,
-				B72E14141CACE592006F9A52 /* DeallocationObserver.m */,
-				B72E14151CACE592006F9A52 /* xcBuddyWeakObjectWrapper.h */,
-				B72E14161CACE592006F9A52 /* xcBuddyWeakObjectWrapper.m */,
+				B7B091591CAD7EB600A74EE9 /* DeallocationObserver.h */,
+				B7B0915A1CAD7EB600A74EE9 /* DeallocationObserver.m */,
+				B7B0915B1CAD7EB600A74EE9 /* xcBuddyWeakObjectWrapper.h */,
+				B7B0915C1CAD7EB600A74EE9 /* xcBuddyWeakObjectWrapper.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		B72E14171CACE592006F9A52 /* JRSwizzle */ = {
+		B7B0915D1CAD7EB600A74EE9 /* JRSwizzle */ = {
 			isa = PBXGroup;
 			children = (
-				B72E14181CACE592006F9A52 /* JRSwizzle.h */,
-				B72E14191CACE592006F9A52 /* JRSwizzle.m */,
+				B7B0915E1CAD7EB600A74EE9 /* JRSwizzle.h */,
+				B7B0915F1CAD7EB600A74EE9 /* JRSwizzle.m */,
 			);
 			path = JRSwizzle;
 			sourceTree = "<group>";
@@ -257,15 +259,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B72E13EB1CACE4B3006F9A52 /* XcodeBuddyPlugin.m in Sources */,
+				B7B091601CAD7EB600A74EE9 /* DeallocationObserver.m in Sources */,
+				B7B091611CAD7EB600A74EE9 /* xcBuddyWeakObjectWrapper.m in Sources */,
 				B72E140A1CACE583006F9A52 /* NSObject_Extension.m in Sources */,
 				B72E14061CACE583006F9A52 /* CommContent.m in Sources */,
 				B72E14081CACE583006F9A52 /* DVTUserNotificationCenter+XcodeBuddy.m in Sources */,
 				B72E140B1CACE583006F9A52 /* XcodeTheme.m in Sources */,
-				B72E141B1CACE592006F9A52 /* DeallocationObserver.m in Sources */,
 				B72E141A1CACE592006F9A52 /* GCDAsyncSocket.m in Sources */,
-				B72E141C1CACE592006F9A52 /* xcBuddyWeakObjectWrapper.m in Sources */,
 				B72E14051CACE583006F9A52 /* ClientSocket.m in Sources */,
-				B72E141D1CACE592006F9A52 /* JRSwizzle.m in Sources */,
+				B7B091621CAD7EB600A74EE9 /* JRSwizzle.m in Sources */,
 				B72E14071CACE583006F9A52 /* ConnectAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
