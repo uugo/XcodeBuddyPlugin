@@ -17,6 +17,7 @@
 #import "XcodeTheme.h"
 #import "ConnectAlert.h"
 #import "ClientSocket.h"
+#import "SendProjectFilesWindowController.h"
 
 static void *XcodeBuddyMenuObserver = &XcodeBuddyMenuObserver;
 
@@ -45,6 +46,7 @@ ConnectAlert* connectAlert;
 @property (nonatomic, strong) NSMutableSet *notificationSet;
 @property (nonatomic, strong, readwrite) NSBundle *bundle;
 @property (nonatomic,copy) NSURL *currentFileURL;
+@property (nonatomic,strong) SendProjectFilesWindowController* sendProjectFilesWindowController;
 @end
 
 @implementation XcodeBuddyPlugin
@@ -124,6 +126,7 @@ NSArray* IgnordDirectoryName;
         //Send All Project Files
         NSMenuItem *sendMenuItem=[[NSMenuItem alloc] initWithTitle:MenuItemTitleSendProjectFiles action:@selector(doClickSendAllProjectFileMenu) keyEquivalent:@""];
         [sendMenuItem setTarget:self];
+        [sendMenuItem setAction:@selector(doClickSendAllProjectFileMenu)];
         [XcodeBuddyMenuItem.submenu addItem:sendMenuItem];
         //disconnect
         disconnectMenuItem=[[NSMenuItem alloc] initWithTitle:MenuItemTitleDisconnect action:@selector(doClickDisconnect) keyEquivalent:@""];
@@ -204,7 +207,6 @@ NSArray* IgnordDirectoryName;
 
 
 - (NSURL *)currentSelectedNavigableItemURL {
-    //    NSLog(@"selectedSourceCodeFileNavigableItems:%@",[[self class] selectedSourceCodeFileNavigableItems]);
     IDEFileNavigableItem *item = [[self  selectedSourceCodeFileNavigableItems] firstObject];
     return [item fileURL];
 }
@@ -223,7 +225,7 @@ NSArray* IgnordDirectoryName;
 - (void)doOpenWithXcBuddyMenuAction{
     if (clientSocketObject.clientSocket != nil && [clientSocketObject.clientSocket isConnected]) {
         NSURL *currentFileURL = [self currentContextNavigableItemURL];
-        //            NSLog(@"doShowInXcBuddyMenuAction:%@",currentFileURL);
+
         if (currentFileURL != nil){
             //FIXME:文件过大的处理和测试
             //发送文件路径（包含文件名）
@@ -240,7 +242,7 @@ NSArray* IgnordDirectoryName;
     NSString* FileRelativePath=self.WorkSpaceFilePath.stringByDeletingLastPathComponent;
     NSString* ProjectName=[FileRelativePath lastPathComponent];
     NSString* RelativePath=[ProjectName stringByAppendingPathComponent: [filePath.path stringByReplacingOccurrencesOfString:FileRelativePath withString:@""]];
-    //                NSLog(@"tag=0,RelativePath:%@,filePath:%@",RelativePath,currentFileURL.absoluteString);
+
     CommContent* commContent=[[CommContent alloc] init];
     commContent.type=type;
     commContent.str=RelativePath;
@@ -249,7 +251,6 @@ NSArray* IgnordDirectoryName;
     [clientSocketObject.clientSocket writeData:[NSKeyedArchiver archivedDataWithRootObject:commContent] withTimeout:-1 tag:0];
 }
 
-// Sample Action, for menu item:
 - (void)doConnectMenuAction
 {
     BOOL isConnected=NO;
@@ -259,46 +260,56 @@ NSArray* IgnordDirectoryName;
     [connectAlert runModal];
 }
 
-- (void) doClickSendAllProjectFileMenu {
-    if (self.WorkSpaceFilePath != nil) {
-        NSString *path=self.WorkSpaceFilePath;
-        [self sendDirectory:path.stringByDeletingLastPathComponent];
-    }
+- (void)doClickSendAllProjectFileMenu
+{
+    NSLog(@"doClickSendAllProjectFileMenu");
+//    if (self.WorkSpaceFilePath != nil) {
+////        NSString *path=self.WorkSpaceFilePath;
+//        if (clientSocketObject.clientSocket.isDisconnected) {
+//            [self doConnectMenuAction];
+//        }
+//        if(self.sendProjectFilesWindowController == nil) {
+//            self.sendProjectFilesWindowController=[[SendProjectFilesWindowController alloc] initWithWindowNibName:@"SendProjectFilesWindowController"];
+//        }
+//        self.sendProjectFilesWindowController.window.title=@"XcodeBuddy";
+//        [self.sendProjectFilesWindowController.window makeKeyAndOrderFront:nil];
+////        [self sendDirectory:path.stringByDeletingLastPathComponent];
+//        
+//    }
 }
 
-- (void) sendDirectory:(NSString *)dirPath {
-    NSFileManager *fileManager=[NSFileManager defaultManager];
-    NSError *err=nil;
-    NSArray *fileList=[fileManager contentsOfDirectoryAtPath:dirPath error:&err];
-    //TODO:增加界面显示传送过程，因为有延时
-    for (NSString* fileName in fileList) {
-        //ignore hidden file
-        if ([[fileName substringToIndex:1] isEqualToString:@"."]) {
-            continue;
-        }
-        NSURL* filePath=[[NSURL alloc] initFileURLWithPath: [dirPath stringByAppendingPathComponent:fileName]];
-        BOOL isDir=NO;
-        if ([fileManager fileExistsAtPath:filePath.path isDirectory:&isDir]) {
-            if (isDir) {
-                NSString * ss=[filePath.path stringByReplacingOccurrencesOfString:[self.WorkSpaceFilePath.stringByDeletingPathExtension stringByAppendingString:@"/" ] withString:@""];
-                //                NSLog(@"ss:%@",ss);
-                if ([IgnordDirectoryName containsObject:ss])
-                    continue;
-                
-                [self sendDirectory:filePath.path];
-            }
-            else {
-                if ([CanSendedFileExtension containsObject: filePath.pathExtension]) {
-                    [self sendFile:filePath Type:kProjectFiles];
-                    NSLog(@"send file:%@",filePath);
-                    [NSThread sleepForTimeInterval:0.05f];
-                }
-            }
-        }
-        
-    }
-    return;
-}
+//- (void) sendDirectory:(NSString *)dirPath {
+//    NSFileManager *fileManager=[NSFileManager defaultManager];
+//    NSError *err=nil;
+//    NSArray *fileList=[fileManager contentsOfDirectoryAtPath:dirPath error:&err];
+//    //TODO:增加界面显示传送过程，因为有延时
+//    for (NSString* fileName in fileList) {
+//        //ignore hidden file
+//        if ([[fileName substringToIndex:1] isEqualToString:@"."]) {
+//            continue;
+//        }
+//        NSURL* filePath=[[NSURL alloc] initFileURLWithPath: [dirPath stringByAppendingPathComponent:fileName]];
+//        BOOL isDir=NO;
+//        if ([fileManager fileExistsAtPath:filePath.path isDirectory:&isDir]) {
+//            if (isDir) {
+//                NSString * ss=[filePath.path stringByReplacingOccurrencesOfString:[self.WorkSpaceFilePath.stringByDeletingPathExtension stringByAppendingString:@"/" ] withString:@""];
+//                if ([IgnordDirectoryName containsObject:ss])
+//                    continue;
+//                
+//                [self sendDirectory:filePath.path];
+//            }
+//            else {
+//                if ([CanSendedFileExtension containsObject: filePath.pathExtension]) {
+//                    [self sendFile:filePath Type:kProjectFiles];
+//                    NSLog(@"send file:%@",filePath);
+//                    [NSThread sleepForTimeInterval:0.05f];
+//                }
+//            }
+//        }
+//        
+//    }
+//    return;
+//}
 
 -(void) doClickDisconnect {
     [clientSocketObject disconnect];
