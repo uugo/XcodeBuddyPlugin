@@ -18,12 +18,14 @@
 		B72E140A1CACE583006F9A52 /* NSObject_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14011CACE583006F9A52 /* NSObject_Extension.m */; };
 		B72E140B1CACE583006F9A52 /* XcodeTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14041CACE583006F9A52 /* XcodeTheme.m */; };
 		B72E141A1CACE592006F9A52 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14111CACE592006F9A52 /* GCDAsyncSocket.m */; };
-		B72E14231CACE59F006F9A52 /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72E14201CACE59F006F9A52 /* DVTKit.framework */; };
-		B72E14241CACE59F006F9A52 /* IDEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72E14211CACE59F006F9A52 /* IDEKit.framework */; };
 		B7B091571CAD7DDF00A74EE9 /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B091561CAD7DDF00A74EE9 /* DVTFoundation.framework */; };
 		B7B091601CAD7EB600A74EE9 /* DeallocationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0915A1CAD7EB600A74EE9 /* DeallocationObserver.m */; };
 		B7B091611CAD7EB600A74EE9 /* xcBuddyWeakObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0915C1CAD7EB600A74EE9 /* xcBuddyWeakObjectWrapper.m */; };
 		B7B091621CAD7EB600A74EE9 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0915F1CAD7EB600A74EE9 /* JRSwizzle.m */; };
+		B7B091641CAD868D00A74EE9 /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B091631CAD868D00A74EE9 /* DVTKit.framework */; };
+		B7B091661CAD86FC00A74EE9 /* IDEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B091651CAD86FC00A74EE9 /* IDEKit.framework */; };
+		B7B0916C1CAD892900A74EE9 /* SendProjectFilesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0916A1CAD892900A74EE9 /* SendProjectFilesWindowController.m */; };
+		B7B0916D1CAD892900A74EE9 /* SendProjectFilesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7B0916B1CAD892900A74EE9 /* SendProjectFilesWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +40,7 @@
 		B72E13F71CACE583006F9A52 /* ClientSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientSocket.m; sourceTree = "<group>"; };
 		B72E13F81CACE583006F9A52 /* CommContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommContent.h; sourceTree = "<group>"; };
 		B72E13F91CACE583006F9A52 /* CommContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommContent.m; sourceTree = "<group>"; };
-		B72E13FA1CACE583006F9A52 /* connectAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = connectAlert.h; sourceTree = "<group>"; };
+		B72E13FA1CACE583006F9A52 /* ConnectAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectAlert.h; sourceTree = "<group>"; };
 		B72E13FB1CACE583006F9A52 /* ConnectAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectAlert.m; sourceTree = "<group>"; };
 		B72E13FC1CACE583006F9A52 /* DVTUserNotificationCenter+XcodeBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DVTUserNotificationCenter+XcodeBuddy.h"; sourceTree = "<group>"; };
 		B72E13FD1CACE583006F9A52 /* DVTUserNotificationCenter+XcodeBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DVTUserNotificationCenter+XcodeBuddy.m"; sourceTree = "<group>"; };
@@ -51,9 +53,6 @@
 		B72E140E1CACE592006F9A52 /* XcodePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodePrivate.h; sourceTree = "<group>"; };
 		B72E14101CACE592006F9A52 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		B72E14111CACE592006F9A52 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		B72E141F1CACE59F006F9A52 /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = XcodeBuddyPlugin/Frameworks/DVTFoundation.framework; sourceTree = "<group>"; };
-		B72E14201CACE59F006F9A52 /* DVTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTKit.framework; path = XcodeBuddyPlugin/Frameworks/DVTKit.framework; sourceTree = "<group>"; };
-		B72E14211CACE59F006F9A52 /* IDEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEKit.framework; path = XcodeBuddyPlugin/Frameworks/IDEKit.framework; sourceTree = "<group>"; };
 		B7B091561CAD7DDF00A74EE9 /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework; sourceTree = "<group>"; };
 		B7B091591CAD7EB600A74EE9 /* DeallocationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeallocationObserver.h; sourceTree = "<group>"; };
 		B7B0915A1CAD7EB600A74EE9 /* DeallocationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeallocationObserver.m; sourceTree = "<group>"; };
@@ -61,6 +60,11 @@
 		B7B0915C1CAD7EB600A74EE9 /* xcBuddyWeakObjectWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = xcBuddyWeakObjectWrapper.m; sourceTree = "<group>"; };
 		B7B0915E1CAD7EB600A74EE9 /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
 		B7B0915F1CAD7EB600A74EE9 /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
+		B7B091631CAD868D00A74EE9 /* DVTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTKit.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework; sourceTree = "<group>"; };
+		B7B091651CAD86FC00A74EE9 /* IDEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEKit.framework; path = ../../../../Applications/Xcode.app/Contents/Frameworks/IDEKit.framework; sourceTree = "<group>"; };
+		B7B091691CAD892900A74EE9 /* SendProjectFilesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendProjectFilesWindowController.h; path = WindowController/SendProjectFilesWindowController.h; sourceTree = "<group>"; };
+		B7B0916A1CAD892900A74EE9 /* SendProjectFilesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendProjectFilesWindowController.m; path = WindowController/SendProjectFilesWindowController.m; sourceTree = "<group>"; };
+		B7B0916B1CAD892900A74EE9 /* SendProjectFilesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SendProjectFilesWindowController.xib; path = WindowController/SendProjectFilesWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +74,9 @@
 			files = (
 				B72E13E21CACE4B3006F9A52 /* AppKit.framework in Frameworks */,
 				B72E13E41CACE4B3006F9A52 /* Foundation.framework in Frameworks */,
-				B72E14231CACE59F006F9A52 /* DVTKit.framework in Frameworks */,
-				B72E14241CACE59F006F9A52 /* IDEKit.framework in Frameworks */,
 				B7B091571CAD7DDF00A74EE9 /* DVTFoundation.framework in Frameworks */,
+				B7B091641CAD868D00A74EE9 /* DVTKit.framework in Frameworks */,
+				B7B091661CAD86FC00A74EE9 /* IDEKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,10 +103,9 @@
 		B72E13E01CACE4B3006F9A52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B7B091651CAD86FC00A74EE9 /* IDEKit.framework */,
+				B7B091631CAD868D00A74EE9 /* DVTKit.framework */,
 				B7B091561CAD7DDF00A74EE9 /* DVTFoundation.framework */,
-				B72E141F1CACE59F006F9A52 /* DVTFoundation.framework */,
-				B72E14201CACE59F006F9A52 /* DVTKit.framework */,
-				B72E14211CACE59F006F9A52 /* IDEKit.framework */,
 				B72E13E11CACE4B3006F9A52 /* AppKit.framework */,
 				B72E13E31CACE4B3006F9A52 /* Foundation.framework */,
 			);
@@ -121,6 +124,9 @@
 				B72E13EA1CACE4B3006F9A52 /* XcodeBuddyPlugin.m */,
 				B72E13EF1CACE4B3006F9A52 /* Info.plist */,
 				B72E13E61CACE4B3006F9A52 /* Supporting Files */,
+				B7B091691CAD892900A74EE9 /* SendProjectFilesWindowController.h */,
+				B7B0916A1CAD892900A74EE9 /* SendProjectFilesWindowController.m */,
+				B7B0916B1CAD892900A74EE9 /* SendProjectFilesWindowController.xib */,
 			);
 			path = XcodeBuddyPlugin;
 			sourceTree = "<group>";
@@ -140,7 +146,7 @@
 				B72E13F71CACE583006F9A52 /* ClientSocket.m */,
 				B72E13F81CACE583006F9A52 /* CommContent.h */,
 				B72E13F91CACE583006F9A52 /* CommContent.m */,
-				B72E13FA1CACE583006F9A52 /* connectAlert.h */,
+				B72E13FA1CACE583006F9A52 /* ConnectAlert.h */,
 				B72E13FB1CACE583006F9A52 /* ConnectAlert.m */,
 				B72E13FC1CACE583006F9A52 /* DVTUserNotificationCenter+XcodeBuddy.h */,
 				B72E13FD1CACE583006F9A52 /* DVTUserNotificationCenter+XcodeBuddy.m */,
@@ -248,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B72E13E81CACE4B3006F9A52 /* XcodeBuddyPlugin.xcscheme in Resources */,
+				B7B0916D1CAD892900A74EE9 /* SendProjectFilesWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +274,7 @@
 				B72E140B1CACE583006F9A52 /* XcodeTheme.m in Sources */,
 				B72E141A1CACE592006F9A52 /* GCDAsyncSocket.m in Sources */,
 				B72E14051CACE583006F9A52 /* ClientSocket.m in Sources */,
+				B7B0916C1CAD892900A74EE9 /* SendProjectFilesWindowController.m in Sources */,
 				B7B091621CAD7EB600A74EE9 /* JRSwizzle.m in Sources */,
 				B72E14071CACE583006F9A52 /* ConnectAlert.m in Sources */,
 			);
@@ -355,8 +363,8 @@
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/XcodeBuddyPlugin/Frameworks",
+					/Applications/Xcode.app/Contents/Frameworks,
+					/Applications/Xcode.app/Contents/SharedFrameworks,
 				);
 				INFOPLIST_FILE = XcodeBuddyPlugin/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
@@ -374,8 +382,8 @@
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/XcodeBuddyPlugin/Frameworks",
+					/Applications/Xcode.app/Contents/Frameworks,
+					/Applications/Xcode.app/Contents/SharedFrameworks,
 				);
 				INFOPLIST_FILE = XcodeBuddyPlugin/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
