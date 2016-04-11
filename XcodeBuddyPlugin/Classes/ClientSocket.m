@@ -8,7 +8,7 @@
 
 #import "ClientSocket.h"
 #import "CommContent.h"
-#import "XcodeBuddy.h"
+#import "XcodeBuddyPlugin.h"
 #import "XcodeTheme.h"
 
 NSString* strSocketOffLineByUser=@"SocketOfflineByUser";
@@ -69,10 +69,10 @@ DEFINE_SINGLETON_FOR_CLASS(ClientSocket)
     NSLog(@"didConnectToHost");
     self.connectTimer=[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(heartbeatToSocket) userInfo:nil repeats:YES];
 //    [self.connectTimer fire];
-    
+    //TODO:update to using this plugin firstly,excute this
     [XcodeTheme synXcodeThemeFile:sock];
     [clientSocket readDataWithTimeout:-1 tag:0];
-    [XcodeBuddy addToHostList:host port:port];
+    [XcodeBuddyPlugin addToHostList:host port:port];
     [disconnectMenuItem setAction:@selector(disconnect)];
     if (connectAlert)
         [connectAlert alertUIChange];
@@ -94,7 +94,7 @@ DEFINE_SINGLETON_FOR_CLASS(ClientSocket)
         [connectAlert alertUIChange];
     if ((self.hostIP.length != 0) && (self.hostPort != 0)) {
         NSString* addStr=[[NSString alloc] initWithFormat:@"%@:%d" ,self.hostIP,self.hostPort];
-        [XcodeBuddy updateHostListMenuItemState:addStr state:NO];
+        [XcodeBuddyPlugin updateHostListMenuItemState:addStr state:NO];
     }
     [disconnectMenuItem setAction:nil];
     if ([sock.userData isEqualToString: @"SocketOfflineByServer"]){

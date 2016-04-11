@@ -20,12 +20,9 @@
     NSInteger i=0;
     NSError* err = nil;
     NSString* path=[NSHomeDirectory() stringByAppendingPathComponent:ThemeDirPath];
-//    NSURL* path=[[NSURL alloc]initFileURLWithPath:ThemeDirPath];
 
-//    NSArray* array=[[NSFileManager defaultManager] contentsOfDirectoryAtPath:path  error:&err];
-//    NSLog(@"%@,%@",path,array);
     for (NSString* fPath in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&err]) {
-        NSLog(@"fPath:%ld:%@",(long)i,fPath);
+//        NSLog(@"fPath:%ld:%@",(long)i,fPath);
         if ([fPath.pathExtension isEqualToString:@"dvtcolortheme"]) {
             CommContent* commCont=[[CommContent alloc] init];
             commCont.type=kXcodeThemeFile;

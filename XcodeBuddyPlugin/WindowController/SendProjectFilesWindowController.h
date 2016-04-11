@@ -16,4 +16,8 @@ FOUNDATION_EXPORT NSString* TotalString;
 @property (strong) IBOutlet NSTextView *sendedFilelistTextView;
 @property (strong) IBOutlet NSButton *closeButton;
 
+- (void)insertStringToTextView:(NSString*) str;
+- (void)startSending;
+- (void)completeSending:(NSInteger)filesNumber;
+
 @end

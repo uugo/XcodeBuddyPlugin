@@ -17,27 +17,27 @@
         <window title="XcodeBuddy" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="499" y="275" width="300" height="320"/>
+            <rect key="contentRect" x="490" y="69" width="514" height="555"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="300" height="320"/>
+                <rect key="frame" x="0.0" y="0.0" width="514" height="555"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r61-Ma-Car">
-                        <rect key="frame" x="-1" y="35" width="302" height="286"/>
-                        <clipView key="contentView" ambiguous="YES" id="6bg-Po-vTe">
-                            <rect key="frame" x="1" y="1" width="285" height="284"/>
+                    <scrollView misplaced="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r61-Ma-Car">
+                        <rect key="frame" x="-1" y="45" width="516" height="511"/>
+                        <clipView key="contentView" id="6bg-Po-vTe">
+                            <rect key="frame" x="1" y="1" width="499" height="509"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView ambiguous="YES" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Hdw-ze-wzw">
-                                    <rect key="frame" x="0.0" y="0.0" width="285" height="284"/>
+                                <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="Hdw-ze-wzw">
+                                    <rect key="frame" x="0.0" y="0.0" width="499" height="509"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="285" height="284"/>
-                                    <size key="maxSize" width="463" height="10000000"/>
+                                    <size key="minSize" width="499" height="509"/>
+                                    <size key="maxSize" width="516" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="285" height="284"/>
-                                    <size key="maxSize" width="463" height="10000000"/>
+                                    <size key="minSize" width="499" height="509"/>
+                                    <size key="maxSize" width="516" height="10000000"/>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,12 +47,12 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="3CZ-oP-eza">
-                            <rect key="frame" x="286" y="1" width="15" height="284"/>
+                            <rect key="frame" x="500" y="1" width="15" height="509"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KNZ-FO-Ha2">
-                        <rect key="frame" x="205" y="2" width="81" height="32"/>
+                    <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KNZ-FO-Ha2">
+                        <rect key="frame" x="419" y="5" width="81" height="32"/>
                         <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PDY-TP-fF1">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -62,11 +62,19 @@ DQ
                         </buttonCell>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="r61-Ma-Car" secondAttribute="trailing" constant="-1" id="2gx-gq-xIE"/>
+                    <constraint firstAttribute="bottom" secondItem="KNZ-FO-Ha2" secondAttribute="bottom" constant="13" id="KCv-CB-GjR"/>
+                    <constraint firstAttribute="trailing" secondItem="KNZ-FO-Ha2" secondAttribute="trailing" constant="20" id="RIg-68-qf0"/>
+                    <constraint firstItem="r61-Ma-Car" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="-1" id="UU9-58-Eqe"/>
+                    <constraint firstItem="r61-Ma-Car" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="-1" id="aaS-vi-n5D"/>
+                    <constraint firstItem="KNZ-FO-Ha2" firstAttribute="top" secondItem="r61-Ma-Car" secondAttribute="bottom" constant="12" id="mRS-ni-PTZ"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="557" y="443"/>
+            <point key="canvasLocation" x="664" y="560.5"/>
         </window>
     </objects>
 </document>

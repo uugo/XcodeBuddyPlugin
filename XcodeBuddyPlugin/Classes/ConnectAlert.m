@@ -7,7 +7,7 @@
 //
 
 #import "ConnectAlert.h"
-#import "XcodeBuddy.h"
+#import "XcodeBuddyPlugin.h"
 #import "ClientSocket.h"
 
 @implementation ConnectAlert

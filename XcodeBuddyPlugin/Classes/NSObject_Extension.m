@@ -8,7 +8,7 @@
 
 
 #import "NSObject_Extension.h"
-#import "XcodeBuddy.h"
+#import "XcodeBuddyPlugin.h"
 
 @implementation NSObject (Xcode_Plugin_Template_Extension)
 
@@ -18,7 +18,7 @@
     NSString *currentApplicationName = [[NSBundle mainBundle] infoDictionary][@"CFBundleName"];
     if ([currentApplicationName isEqual:@"Xcode"]) {
         dispatch_once(&onceToken, ^{
-            sharedPlugin = [[XcodeBuddy alloc] initWithBundle:plugin];
+            sharedPlugin = [[XcodeBuddyPlugin alloc] initWithBundle:plugin];
         });
     }
 }
