@@ -17,6 +17,8 @@ FOUNDATION_EXPORT NSString *const ProjectNavigatorContextualMenu ;
 
 FOUNDATION_EXPORT NSMenuItem *disconnectMenuItem;
 FOUNDATION_EXPORT ConnectAlert* connectAlert;
+FOUNDATION_EXPORT NSArray* IgnordDirectoryName;
+FOUNDATION_EXPORT NSArray*  CanSendedFileExtension;
 
 @class XcodeBuddyPlugin;
 
@@ -32,6 +34,6 @@ static XcodeBuddyPlugin *sharedPlugin;
 - (void)doConnectMenuAction;
 +(void) addToHostList:(NSString*) ip port:(UInt16)port;
 + (void) updateHostListMenuItemState:(NSString*) ipAndPort state:(BOOL) state;
-
-
++(NSString*) WorkSpaceFilePath;
++ (BOOL) sendFile:(NSURL*)filePath Type:(NSInteger) type;
 @end

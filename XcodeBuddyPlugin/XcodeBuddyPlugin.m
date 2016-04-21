@@ -39,6 +39,9 @@ NSString *const ProjectNavigatorContextualMenu = @"Project navigator contextual 
 NSUInteger const MaxCountOfHostArray=5;
 ConnectAlert* connectAlert;
 
+NSArray* IgnordDirectoryName;
+NSArray*  CanSendedFileExtension;
+
 @interface XcodeBuddyPlugin()
 
 @property (nonatomic, assign) BOOL projectNavigatorContextualMenuIsOpened;
@@ -60,8 +63,6 @@ NSMutableArray *hostarray;
 NSMenuItem *XcodeBuddyMenuItem;
 NSMenuItem *disconnectMenuItem;
 
-NSArray*  CanSendedFileExtension;
-NSArray* IgnordDirectoryName;
 
 + (instancetype)sharedPlugin
 {
@@ -228,7 +229,7 @@ NSArray* IgnordDirectoryName;
         if (currentFileURL != nil){
             //FIXME:文件过大的处理和测试
             //发送文件路径（包含文件名）
-            [self sendFile:currentFileURL Type:kFileContent];
+          [XcodeBuddyPlugin   sendFile:currentFileURL Type:kFileContent];
         }
     }
     else {
@@ -237,11 +238,12 @@ NSArray* IgnordDirectoryName;
     }
 }
 
-- (BOOL) sendFile:(NSURL*)filePath Type:(NSInteger) type{
++ (BOOL) sendFile:(NSURL*)filePath Type:(NSInteger) type{
     NSString* workspacePath=self.WorkSpaceFilePath;
     if(workspacePath == nil)
         return NO;
-    NSString* FileRelativePath=self.WorkSpaceFilePath.stringByDeletingLastPathComponent;
+//    NSString* FileRelativePath=self.WorkSpaceFilePath.stringByDeletingLastPathComponent;
+     NSString* FileRelativePath=self.WorkSpaceFilePath;
     NSString* ProjectName=[FileRelativePath lastPathComponent];
     NSString* RelativePath=[ProjectName stringByAppendingPathComponent: [filePath.path stringByReplacingOccurrencesOfString:FileRelativePath withString:@""]];
 
@@ -265,22 +267,22 @@ NSArray* IgnordDirectoryName;
 
 - (void)doClickSendAllProjectFileMenu
 {
-    NSLog(@"doClickSendAllProjectFileMenu");
-      NSString *path=self.WorkSpaceFilePath;
-    if (path != nil) {
-        if (clientSocketObject.clientSocket.isDisconnected) {
-            [self doConnectMenuAction];
-        }
+//    NSLog(@"doClickSendAllProjectFileMenu");
+//    NSString *path=self.WorkSpaceFilePath;
+//    if (path != nil) {
+//        if (clientSocketObject.clientSocket.isDisconnected) {
+//            [self doConnectMenuAction];
+//        }
         if(self.sendProjectFilesWindowController == nil) {
             self.sendProjectFilesWindowController=[[SendProjectFilesWindowController alloc] initWithWindowNibName:@"SendProjectFilesWindowController"];
         }
         self.sendProjectFilesWindowController.window.title=@"XcodeBuddy";
         [self.sendProjectFilesWindowController.window makeKeyAndOrderFront:nil];
         //send files
-        [self.sendProjectFilesWindowController startSending];
-        [self sendDirectory:path];
-        [self.sendProjectFilesWindowController completeSending:fileIndex];
-    }
+//        [self.sendProjectFilesWindowController startSending];
+//        [self sendDirectory:path];
+//        [self.sendProjectFilesWindowController completeSending:fileIndex];
+//    }
 }
 /**
  *  send files and directories in the dirPath
@@ -289,41 +291,41 @@ NSArray* IgnordDirectoryName;
  *
  *  @return file number in the dir path
  */
-static NSInteger fileIndex=0;
-- (void) sendDirectory:(NSString *)dirPath {
-    NSFileManager *fileManager=[NSFileManager defaultManager];
-    NSError *err=nil;
-    NSArray *fileList=[fileManager contentsOfDirectoryAtPath:dirPath error:&err];
-    NSString* workSpacePath=self.WorkSpaceFilePath;
-    if (workSpacePath == nil)
-        return ;
-    for (NSString* fileName in fileList) {
-        //ignore hidden file
-        if ([[fileName substringToIndex:1] isEqualToString:@"."]) {
-            continue;
-        }
-        NSURL* filePath=[[NSURL alloc] initFileURLWithPath: [dirPath stringByAppendingPathComponent:fileName]];
-        BOOL isDir=NO;
-        if ([fileManager fileExistsAtPath:filePath.path isDirectory:&isDir]) {
-            if (isDir) {
-                NSString * ss=[filePath.path stringByReplacingOccurrencesOfString:workSpacePath withString:@""];
-                if ([IgnordDirectoryName containsObject:ss])
-                    continue;
-               [self sendDirectory:filePath.path];
-            }
-            else {
-                if ([CanSendedFileExtension containsObject: filePath.pathExtension]) {
-                    [self sendFile:filePath Type:kProjectFiles];
-//                    NSLog(@"send file:%@",filePath);
-                    fileIndex++;
-                    [self.sendProjectFilesWindowController insertStringToTextView:[[NSString alloc] initWithFormat:@"%ld.%@",fileIndex,[filePath.path stringByReplacingOccurrencesOfString:workSpacePath withString:@""] ]];
-                    [NSThread sleepForTimeInterval:0.05f];
-                }
-            }
-        }
-    }
-    return;
-}
+//static NSInteger fileIndex=0;
+//- (void) sendDirectory:(NSString *)dirPath {
+//    NSFileManager *fileManager=[NSFileManager defaultManager];
+//    NSError *err=nil;
+//    NSArray *fileList=[fileManager contentsOfDirectoryAtPath:dirPath error:&err];
+//    NSString* workSpacePath=self.WorkSpaceFilePath;
+//    if (workSpacePath == nil)
+//        return ;
+//    for (NSString* fileName in fileList) {
+//        //ignore hidden file
+//        if ([[fileName substringToIndex:1] isEqualToString:@"."]) {
+//            continue;
+//        }
+//        NSURL* filePath=[[NSURL alloc] initFileURLWithPath: [dirPath stringByAppendingPathComponent:fileName]];
+//        BOOL isDir=NO;
+//        if ([fileManager fileExistsAtPath:filePath.path isDirectory:&isDir]) {
+//            if (isDir) {
+//                NSString * ss=[filePath.path stringByReplacingOccurrencesOfString:workSpacePath withString:@""];
+//                if ([IgnordDirectoryName containsObject:ss])
+//                    continue;
+//               [self sendDirectory:filePath.path];
+//            }
+//            else {
+//                if ([CanSendedFileExtension containsObject: filePath.pathExtension]) {
+//                    [self sendFile:filePath Type:kProjectFiles];
+////                    NSLog(@"send file:%@",filePath);
+//                    fileIndex++;
+//                    [self.sendProjectFilesWindowController insertStringToTextView:[[NSString alloc] initWithFormat:@"%ld.%@",fileIndex,[filePath.path stringByReplacingOccurrencesOfString:workSpacePath withString:@""] ]];
+//                    [NSThread sleepForTimeInterval:0.05f];
+//                }
+//            }
+//        }
+//    }
+//    return;
+//}
 
 -(void) doClickDisconnect {
     [clientSocketObject disconnect];
@@ -435,7 +437,7 @@ static NSInteger fileIndex=0;
     return nil;
 }
 
--(NSString*) WorkSpaceFilePath {
++(NSString*) WorkSpaceFilePath {
 //    id currentWindowController = [[NSApp keyWindow] windowController];
 //    if ([currentWindowController isKindOfClass:NSClassFromString(@"IDEWorkspaceWindowController")])
 //    {

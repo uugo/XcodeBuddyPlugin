@@ -15,6 +15,7 @@ FOUNDATION_EXPORT NSString* TotalString;
 @interface SendProjectFilesWindowController : NSWindowController
 @property (strong) IBOutlet NSTextView *sendedFilelistTextView;
 @property (strong) IBOutlet NSButton *closeButton;
+@property (strong) IBOutlet NSButton *SendAllButton;
 
 - (void)insertStringToTextView:(NSString*) str;
 - (void)startSending;

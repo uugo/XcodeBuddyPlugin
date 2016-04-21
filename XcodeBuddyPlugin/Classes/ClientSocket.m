@@ -67,7 +67,7 @@ DEFINE_SINGLETON_FOR_CLASS(ClientSocket)
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
     NSLog(@"didConnectToHost");
-    self.connectTimer=[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(heartbeatToSocket) userInfo:nil repeats:YES];
+//    self.connectTimer=[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(heartbeatToSocket) userInfo:nil repeats:YES];
 //    [self.connectTimer fire];
     //TODO:update to using this plugin firstly,excute this
     [XcodeTheme synXcodeThemeFile:sock];
