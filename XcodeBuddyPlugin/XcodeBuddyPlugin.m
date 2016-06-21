@@ -18,6 +18,9 @@
 #import "ConnectAlert.h"
 #import "ClientSocket.h"
 #import "SendProjectFilesWindowController.h"
+#import "HelpWindowController.h"
+#import "UserInfoKeys.h"
+#import "DVTUserNotificationCenter+XcodeBuddy.h"
 
 static void *XcodeBuddyMenuObserver = &XcodeBuddyMenuObserver;
 
@@ -29,12 +32,16 @@ NSString *const MenuItemTitleOpenWithxcBuddy = @"Open with xcBuddy";
 NSString *const MenuItemTitleOpenWithExternalEditor= @"Open with External Editor";
 NSString *const MenuItemTitleEdit=@"Edit";
 NSString *const MenuItemTitleXcodeBuddy=@"XcodeBuddy";
-NSString *const MenuItemTitleConnect=@"Connect...";
+NSString *const MenuItemTitleConnect=@"Connect";
 NSString *const MenuItemTitleDisconnect=@"Disconnect";
-NSString *const MenuItemTitleSendProjectFiles=@"Send All Project Files...";
+NSString *const MenuItemTitleSendProjectFiles=@"Send All Project Files";
 
 
 NSString *const ProjectNavigatorContextualMenu = @"Project navigator contextual menu";
+NSString *const DisconnectORReconnect=@"Disconnect from %@,or Reconnect to there ?";
+
+NSString *const XcodeBuddyPluginNewVersionNotification = @"XcodeBuddyPluginNewVersionNotification";
+
 //常连ip列表的最大菜单项个数
 NSUInteger const MaxCountOfHostArray=5;
 ConnectAlert* connectAlert;
@@ -50,6 +57,9 @@ NSArray*  CanSendedFileExtension;
 @property (nonatomic, strong, readwrite) NSBundle *bundle;
 @property (nonatomic,copy) NSURL *currentFileURL;
 @property (nonatomic,strong) SendProjectFilesWindowController* sendProjectFilesWindowController;
+@property (nonatomic,strong) HelpWindowController* helpWindowController;
+
+
 @end
 
 @implementation XcodeBuddyPlugin
@@ -63,6 +73,12 @@ NSMutableArray *hostarray;
 NSMenuItem *XcodeBuddyMenuItem;
 NSMenuItem *disconnectMenuItem;
 
+NSInteger TagOfConnectMenuItem = 1;
+NSInteger TagOfSendProjectMenuItem = 2;
+NSInteger TagOfDisconnectMenuItem = 3;
+NSInteger TagOfClearMenuItem = 4;
+NSInteger TagOfHelpMenuItem = 5;
+NSInteger TagOfHostAddrList = 6;
 
 + (instancetype)sharedPlugin
 {
@@ -84,9 +100,9 @@ NSMenuItem *disconnectMenuItem;
                                                  selector:@selector(didApplicationFinishLaunchingNotification:)
                                                      name:NSApplicationDidFinishLaunchingNotification
                                                    object:nil];
-        CanSendedFileExtension=@[@"h",@"m",@"swift",@"xcworkspace",@"pbxproj",@"xcscheme",@"xcbkptlist",@"plist"];
+        CanSendedFileExtension=@[@"h",@"m",@"swift",@"mm",@"c",@"hpp",@"cpp",@"xcworkspace",@"pbxproj",@"xcscheme",@"xcbkptlist",@"plist"];
         IgnordDirectoryName=@[@"Frameworks",@"Resources"];
-        
+        [self compareVersion: plugin] ;
     }
     return self;
 }
@@ -99,12 +115,35 @@ NSMenuItem *disconnectMenuItem;
     [self updateMainMenuItems];
 }
 
+#pragma mark - compare version
+
+- (void) compareVersion:(NSBundle*)plugin {
+    NSString *currentVersion = [plugin objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kLatestVersion];
+    NSString *lastVersion = [[NSUserDefaults standardUserDefaults] stringForKey:kLatestVersion];
+    
+    if (lastVersion == nil || [lastVersion compare:currentVersion options:NSNumericSearch] == NSOrderedDescending) {
+        NSUserNotification *notification = [NSUserNotification new] ;
+        notification.title = [NSString stringWithFormat:@"XcodeBuddyPlugin updated to %@",currentVersion];
+        notification.informativeText = @"View realease notes";
+        notification.userInfo = @{XcodeBuddyPluginNewVersionNotification: @(YES)};
+        notification.actionButtonTitle = @"View";
+//        [notification setValue:@(YES) forKey:@"_showButtons"];
+        notification.hasActionButton = YES;
+        notification.actionButtonTitle = @"OK";
+        notification.otherButtonTitle = @"Cancle";
+        
+        [[DVTUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:kLatestVersion];
+    }
+}
+
 #pragma mark - main menu and context menu
 
 -(void)updateMainMenuItems
 {
     // Create menu items, initialize UI, etc.
-    // Sample Menu Item:
     NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:MenuItemTitleEdit] ;
     if (menuItem) {
         [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
@@ -121,25 +160,34 @@ NSMenuItem *disconnectMenuItem;
         //        [mainMenuItem setTarget:self];
         
         //connect
-        NSMenuItem *linkMenuItem=[[NSMenuItem alloc] initWithTitle:MenuItemTitleConnect action:@selector(doConnectMenuAction) keyEquivalent:@""];
+        NSMenuItem *linkMenuItem=[[NSMenuItem alloc] initWithTitle:MenuItemTitleConnect action:@selector(doClickMenuItemAction:) keyEquivalent:@""];
+        linkMenuItem.tag = TagOfConnectMenuItem;
         [linkMenuItem setTarget:self];
         [XcodeBuddyMenuItem.submenu addItem:linkMenuItem];
+        
         //Send All Project Files
-        NSMenuItem *sendMenuItem=[[NSMenuItem alloc] initWithTitle:MenuItemTitleSendProjectFiles action:@selector(doClickSendAllProjectFileMenu) keyEquivalent:@""];
+        NSMenuItem *sendMenuItem=[[NSMenuItem alloc] initWithTitle:MenuItemTitleSendProjectFiles action:@selector(doClickMenuItemAction:) keyEquivalent:@""];
+        sendMenuItem.tag = TagOfSendProjectMenuItem;
         [sendMenuItem setTarget:self];
         [XcodeBuddyMenuItem.submenu addItem:sendMenuItem];
+        
         //disconnect
-        disconnectMenuItem=[[NSMenuItem alloc] initWithTitle:MenuItemTitleDisconnect action:@selector(doClickDisconnect) keyEquivalent:@""];
+        disconnectMenuItem=[[NSMenuItem alloc] initWithTitle:MenuItemTitleDisconnect action:@selector(doClickMenuItemAction:) keyEquivalent:@""];
+        disconnectMenuItem.tag = TagOfDisconnectMenuItem;
         [disconnectMenuItem setTarget:self];
-        [disconnectMenuItem setAction:nil];
+//        [disconnectMenuItem setAction:nil];
         [XcodeBuddyMenuItem.submenu addItem:disconnectMenuItem];
 #ifdef DEBUG
         //clear menu
-        NSMenuItem *cleartMenuItem=[[NSMenuItem alloc] initWithTitle:@"Clear Menu..." action:@selector(doClickClearMenuItem) keyEquivalent:@""];
-        [cleartMenuItem setTarget:self];
-        [XcodeBuddyMenuItem.submenu addItem:cleartMenuItem];
+//        NSMenuItem *cleartMenuItem=[[NSMenuItem alloc] initWithTitle:@"Clear Menu" action:@selector(doClickMenuItemAction:) keyEquivalent:@""];
+//        [cleartMenuItem setTarget:self];
+//        [XcodeBuddyMenuItem.submenu addItem:cleartMenuItem];
 #endif
-        
+        //help menu
+        NSMenuItem *helpMenuItem = [[NSMenuItem alloc] initWithTitle:@"Help" action:@selector(doClickMenuItemAction:) keyEquivalent:@""];
+        helpMenuItem.tag = TagOfHelpMenuItem;
+        [helpMenuItem setTarget:self];
+        [XcodeBuddyMenuItem.submenu addItem:helpMenuItem];
         
         //添加曾经连接过的IP
         [[XcodeBuddyMenuItem submenu] addItem:[NSMenuItem separatorItem]];
@@ -147,13 +195,14 @@ NSMenuItem *disconnectMenuItem;
         hostarray=[[NSUserDefaults standardUserDefaults] objectForKey:kHostAddressList];
         if (hostarray != nil) {
             for (NSString *parray in hostarray){
-                NSMenuItem *mitem=[[NSMenuItem alloc] initWithTitle:parray action:@selector(doClickHostAddrList:) keyEquivalent:@""];
+                NSMenuItem *mitem=[[NSMenuItem alloc] initWithTitle:parray action:@selector(doClickMenuItemAction:) keyEquivalent:@""];
                 [mitem setTarget:self];
                 [[XcodeBuddyMenuItem submenu] addItem:mitem];
             }
         }
         
     }
+    /*
     menuItem = [[NSApp mainMenu] itemWithTitle:@"File"];
     if (menuItem) {
         NSMenuItem* menuItemOpenWithEE=[[menuItem submenu] itemWithTitle:MenuItemTitleOpenWithExternalEditor];
@@ -163,7 +212,7 @@ NSMenuItem *disconnectMenuItem;
             [menuItemOpenWithxcBuddy setTarget:self];
             [[menuItem submenu] insertItem:menuItemOpenWithxcBuddy atIndex:index+1];
         }
-    }
+    }*/
 }
 
 + (void) updateHostListMenuItemState:(NSString*) ipAndPort state:(BOOL) state{
@@ -224,17 +273,16 @@ NSMenuItem *disconnectMenuItem;
 
 - (void)doOpenWithXcBuddyMenuAction{
     if (clientSocketObject.clientSocket != nil && [clientSocketObject.clientSocket isConnected]) {
-        NSURL *currentFileURL = [self currentContextNavigableItemURL];
-
-        if (currentFileURL != nil){
-            //FIXME:文件过大的处理和测试
-            //发送文件路径（包含文件名）
-          [XcodeBuddyPlugin   sendFile:currentFileURL Type:kFileContent];
-        }
+       
     }
     else {
         [self doConnectMenuAction];
-        //            [self doShowInXcBuddyMenuAction];
+    }
+    NSURL *currentFileURL = [self currentContextNavigableItemURL];
+    if (currentFileURL != nil){
+        //FIXME:文件过大的处理和测试
+        //发送文件路径（包含文件名）
+        [XcodeBuddyPlugin   sendFile:currentFileURL Type:kFileContent];
     }
 }
 
@@ -252,8 +300,57 @@ NSMenuItem *disconnectMenuItem;
     commContent.str=RelativePath;
     commContent.data=[[NSData alloc] initWithContentsOfFile:filePath.path];
     commContent.length=commContent.data.length;
-    [clientSocketObject.clientSocket writeData:[NSKeyedArchiver archivedDataWithRootObject:commContent] withTimeout:-1 tag:0];
+//     [clientSocketObject.clientSocket writeData:[NSKeyedArchiver archivedDataWithRootObject:commContent] withTimeout:-1 tag:0];
+    
+    NSMutableData* sendData = [NSMutableData data];
+    NSKeyedArchiver* archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:sendData];
+    [archiver encodeObject:commContent forKey:@"objData"];
+    [archiver finishEncoding];
+    [clientSocketObject.clientSocket writeData:sendData withTimeout:-1 tag:0];
     return YES;
+}
+
+- (void) doClickMenuItemAction:(id)sender {
+
+    if ([sender isKindOfClass:[NSMenuItem class]]) {
+        NSMenuItem *mItem = (NSMenuItem*)sender;
+        if (mItem.tag == TagOfConnectMenuItem) {
+            [self doConnectMenuAction];
+        }
+        else if (mItem.tag == TagOfSendProjectMenuItem) {
+            if(self.sendProjectFilesWindowController == nil) {
+                self.sendProjectFilesWindowController=[[SendProjectFilesWindowController alloc] initWithWindowNibName:@"SendProjectFilesWindowController"];
+            }
+            self.sendProjectFilesWindowController.window.title=@"XcodeBuddy";
+            [self.sendProjectFilesWindowController.window makeKeyAndOrderFront:nil];
+        }
+        else if (mItem.tag  == TagOfDisconnectMenuItem) {
+             [clientSocketObject disconnect];
+        }
+        else if (mItem.tag == TagOfClearMenuItem) {
+            for(NSString* host in hostarray){
+                NSMenuItem* item=[[XcodeBuddyMenuItem submenu] itemWithTitle:host];
+                if (item!=nil) {
+                    [[XcodeBuddyMenuItem submenu] removeItem:item];
+                    item=nil;
+                }
+            }
+            [hostarray removeAllObjects];
+            [[NSUserDefaults standardUserDefaults] setObject:hostarray forKey:kHostAddressList];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        else if (mItem.tag == TagOfHelpMenuItem) {
+            if (self.helpWindowController == nil) {
+               self.helpWindowController = [[HelpWindowController alloc] initWithWindowNibName:@"HelpWindowController"];
+            }
+            [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+            [self.helpWindowController.window makeKeyAndOrderFront:nil];
+        }
+        else if (mItem.tag == TagOfHostAddrList) {
+            [self doClickHostAddrList:mItem];
+        }
+    }
+
 }
 
 - (void)doConnectMenuAction
@@ -265,98 +362,36 @@ NSMenuItem *disconnectMenuItem;
     [connectAlert runModal];
 }
 
-- (void)doClickSendAllProjectFileMenu
-{
-//    NSLog(@"doClickSendAllProjectFileMenu");
-//    NSString *path=self.WorkSpaceFilePath;
-//    if (path != nil) {
-//        if (clientSocketObject.clientSocket.isDisconnected) {
-//            [self doConnectMenuAction];
-//        }
-        if(self.sendProjectFilesWindowController == nil) {
-            self.sendProjectFilesWindowController=[[SendProjectFilesWindowController alloc] initWithWindowNibName:@"SendProjectFilesWindowController"];
-        }
-        self.sendProjectFilesWindowController.window.title=@"XcodeBuddy";
-        [self.sendProjectFilesWindowController.window makeKeyAndOrderFront:nil];
-        //send files
-//        [self.sendProjectFilesWindowController startSending];
-//        [self sendDirectory:path];
-//        [self.sendProjectFilesWindowController completeSending:fileIndex];
-//    }
-}
-/**
- *  send files and directories in the dirPath
- *
- *  @param dirPath dir path
- *
- *  @return file number in the dir path
- */
-//static NSInteger fileIndex=0;
-//- (void) sendDirectory:(NSString *)dirPath {
-//    NSFileManager *fileManager=[NSFileManager defaultManager];
-//    NSError *err=nil;
-//    NSArray *fileList=[fileManager contentsOfDirectoryAtPath:dirPath error:&err];
-//    NSString* workSpacePath=self.WorkSpaceFilePath;
-//    if (workSpacePath == nil)
-//        return ;
-//    for (NSString* fileName in fileList) {
-//        //ignore hidden file
-//        if ([[fileName substringToIndex:1] isEqualToString:@"."]) {
-//            continue;
-//        }
-//        NSURL* filePath=[[NSURL alloc] initFileURLWithPath: [dirPath stringByAppendingPathComponent:fileName]];
-//        BOOL isDir=NO;
-//        if ([fileManager fileExistsAtPath:filePath.path isDirectory:&isDir]) {
-//            if (isDir) {
-//                NSString * ss=[filePath.path stringByReplacingOccurrencesOfString:workSpacePath withString:@""];
-//                if ([IgnordDirectoryName containsObject:ss])
-//                    continue;
-//               [self sendDirectory:filePath.path];
-//            }
-//            else {
-//                if ([CanSendedFileExtension containsObject: filePath.pathExtension]) {
-//                    [self sendFile:filePath Type:kProjectFiles];
-////                    NSLog(@"send file:%@",filePath);
-//                    fileIndex++;
-//                    [self.sendProjectFilesWindowController insertStringToTextView:[[NSString alloc] initWithFormat:@"%ld.%@",fileIndex,[filePath.path stringByReplacingOccurrencesOfString:workSpacePath withString:@""] ]];
-//                    [NSThread sleepForTimeInterval:0.05f];
-//                }
-//            }
-//        }
-//    }
-//    return;
-//}
-
--(void) doClickDisconnect {
-    [clientSocketObject disconnect];
-}
-
-
-
 - (void) doClickHostAddrList:(NSMenuItem*) menuitem {
     NSString* ip;
     UInt16 port;
     NSArray *array=[menuitem.title componentsSeparatedByString:@":"];
     ip =[array[0] stringValue];
     port=[array[1] intValue];
-    [clientSocketObject connectToHost:ip andPort:port];
-}
-
-
-#ifdef DEBUG
-- (void)doClickClearMenuItem{
-    for(NSString* host in hostarray){
-        NSMenuItem* item=[[XcodeBuddyMenuItem submenu] itemWithTitle:host];
-        if (item!=nil) {
-            [[XcodeBuddyMenuItem submenu] removeItem:item];
-            item=nil;
+    if ((clientSocketObject.clientSocket.isConnected) && ([clientSocketObject.clientSocket.connectedHost isEqualToString:ip]) && (clientSocketObject.clientSocket.connectedPort==port)) {
+        NSAlert *alert= [[NSAlert alloc] init];
+        alert.informativeText=[[NSString alloc] initWithFormat:DisconnectORReconnect,menuitem.title];
+        alert.messageText=@"XcodeBuddy";
+        alert.showsHelp=NO;
+        [alert addButtonWithTitle:@"Reconnect"];
+        [alert addButtonWithTitle:@"Disconnect"];
+        [alert addButtonWithTitle:@"Cancle"];
+        NSModalResponse respTag=[alert runModal];
+        switch (respTag) {
+            case NSAlertFirstButtonReturn:
+                [clientSocketObject connectToHost:ip andPort:port];
+                break;
+            case NSAlertSecondButtonReturn:
+                [clientSocketObject disconnect];
+                break;
+            case NSAlertThirdButtonReturn:
+                break;
         }
     }
-    [hostarray removeAllObjects];
-    [[NSUserDefaults standardUserDefaults] setObject:hostarray forKey:kHostAddressList];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    else {
+        [clientSocketObject connectToHost:ip andPort:port];
+    }
 }
-#endif
 
 +(void) addToHostList:(NSString*) ip port:(UInt16)port {
     if (hostarray == nil) {

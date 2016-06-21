@@ -20,11 +20,15 @@ FOUNDATION_EXPORT ConnectAlert* connectAlert;
 FOUNDATION_EXPORT NSArray* IgnordDirectoryName;
 FOUNDATION_EXPORT NSArray*  CanSendedFileExtension;
 
+FOUNDATION_EXPORT NSString *const XcodeBuddyPluginNewVersionNotification;
+
 @class XcodeBuddyPlugin;
 
 static XcodeBuddyPlugin *sharedPlugin;
 
 @interface XcodeBuddyPlugin : NSObject
+
+
 
 + (instancetype)sharedPlugin;
 - (id)initWithBundle:(NSBundle *)plugin;
