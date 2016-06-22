@@ -2,7 +2,7 @@
 
 ![usage](http://7xqvso.com1.z0.glb.clouddn.com/2016-06-21-usage.png)
 
-## XcodeBuddyPlugin
+## Version
 
 Latest Version: 1.0
 
@@ -19,8 +19,9 @@ Latest Version: 1.0
 * send all the projects files to `xcBuddy` App of your ipad
 * `open with xcBuddy` in right-click context menu, and view this file in `xcBuddy` App
 
-![xcBuddy App](http://7xqvso.com1.z0.glb.clouddn.com/2016-06-21-Slice 1.png)
 xcBuddy App
+![xcBuddy App](http://7xqvso.com1.z0.glb.clouddn.com/2016-06-21-Slice 1.png)
+
 
 ## Install
 Three methods:
