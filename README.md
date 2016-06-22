@@ -2,15 +2,13 @@
 
 ![usage](http://7xqvso.com1.z0.glb.clouddn.com/2016-06-21-usage.png)
 
-## Version
+## XcodeBuddyPlugin
 
 Latest Version: 1.0
 
 ![屏幕快照 2016-06-21 09.58.43](http://7xqvso.com1.z0.glb.clouddn.com/2016-06-21-屏幕快照 2016-06-21 09.58.43.png)
 
 ![屏幕快照 2016-06-21 09.59.17](http://7xqvso.com1.z0.glb.clouddn.com/2016-06-21-屏幕快照 2016-06-21 09.59.17.png)
-
-
 
 
 ## What can XcodeBuddy Plugin do ?
@@ -21,7 +19,6 @@ Latest Version: 1.0
 
 xcBuddy App
 ![xcBuddy App](http://7xqvso.com1.z0.glb.clouddn.com/2016-06-21-Slice 1.png)
-
 
 ## Install
 Three methods:
