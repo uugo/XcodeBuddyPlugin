@@ -24,6 +24,7 @@ xcBuddy App
 
 ## Install
 Three methods:
+
 1. use [Alcatraz plugin](https://github.com/alcatraz/Alcatraz),select `Package Manager` from the `window` menu in Xcode;
 2. download from [this link](https://github.com/uugo/XcodeBuddyPlugin/releases) and move the plugin file to the path
  `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/`,
