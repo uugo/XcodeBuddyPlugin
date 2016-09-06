@@ -1,6 +1,6 @@
 # XcodeBuddyPlugin 
 
-![usage](http://7xqvso.com1.z0.glb.clouddn.com/2016-06-21-usage.png)
+![usage](https://github.com/uugo/XcodeBuddyPlugin/blob/master/image/usage.png)
 
 ## Version
 
