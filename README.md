@@ -6,9 +6,9 @@
 
 Latest Version: 1.0
 
-![屏幕快照 2016-06-21 09.58.43](http://7xqvso.com1.z0.glb.clouddn.com/2016-06-21-屏幕快照 2016-06-21 09.58.43.png)
+![屏幕快照 2016-06-21 09.58.43](https://github.com/uugo/XcodeBuddyPlugin/blob/master/image/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-06-21%2009.58.43.png)
 
-![屏幕快照 2016-06-21 09.59.17](http://7xqvso.com1.z0.glb.clouddn.com/2016-06-21-屏幕快照 2016-06-21 09.59.17.png)
+![屏幕快照 2016-06-21 09.59.17](https://github.com/uugo/XcodeBuddyPlugin/blob/master/image/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202016-06-21%2009.59.17.png)
 
 
 
@@ -20,7 +20,7 @@ Latest Version: 1.0
 
 xcBuddy App
 
-![xcBuddy App](http://7xqvso.com1.z0.glb.clouddn.com/2016-06-21-Slice 1.png)
+![xcBuddy App](https://github.com/uugo/XcodeBuddyPlugin/blob/master/image/Slice%201.png)
 
 ## Install
 Three methods:
