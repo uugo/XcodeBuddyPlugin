@@ -30,7 +30,6 @@ Three methods:
  `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/`,
 then restart Xcode;
 3. clone this repo,build the project and it's done.
-4. 
 
 ## Uninstall
 Just remove CocoaPodUI.xcplugin from ~/Library/Application Support/Developer/Shared/Xcode/Plug-ins.
