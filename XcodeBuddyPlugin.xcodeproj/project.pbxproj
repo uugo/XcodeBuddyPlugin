@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B71620491D153C9200F1FA4C /* HelpWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B71620471D153C9200F1FA4C /* HelpWindowController.m */; };
+		B716204A1D153C9200F1FA4C /* HelpWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B71620481D153C9200F1FA4C /* HelpWindowController.xib */; };
+		B716204C1D191A4700F1FA4C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = B716204B1D191A4700F1FA4C /* README.md */; };
 		B72E13E21CACE4B3006F9A52 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72E13E11CACE4B3006F9A52 /* AppKit.framework */; };
 		B72E13E41CACE4B3006F9A52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B72E13E31CACE4B3006F9A52 /* Foundation.framework */; };
 		B72E13E81CACE4B3006F9A52 /* XcodeBuddyPlugin.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = B72E13E71CACE4B3006F9A52 /* XcodeBuddyPlugin.xcscheme */; };
@@ -18,6 +21,7 @@
 		B72E140A1CACE583006F9A52 /* NSObject_Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14011CACE583006F9A52 /* NSObject_Extension.m */; };
 		B72E140B1CACE583006F9A52 /* XcodeTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14041CACE583006F9A52 /* XcodeTheme.m */; };
 		B72E141A1CACE592006F9A52 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B72E14111CACE592006F9A52 /* GCDAsyncSocket.m */; };
+		B75FA4FF1D13F0B100DCAEEE /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B75FA4FE1D13F0B100DCAEEE /* Image.xcassets */; };
 		B7B091571CAD7DDF00A74EE9 /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B091561CAD7DDF00A74EE9 /* DVTFoundation.framework */; };
 		B7B091601CAD7EB600A74EE9 /* DeallocationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0915A1CAD7EB600A74EE9 /* DeallocationObserver.m */; };
 		B7B091611CAD7EB600A74EE9 /* xcBuddyWeakObjectWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0915C1CAD7EB600A74EE9 /* xcBuddyWeakObjectWrapper.m */; };
@@ -26,9 +30,15 @@
 		B7B091661CAD86FC00A74EE9 /* IDEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B091651CAD86FC00A74EE9 /* IDEKit.framework */; };
 		B7B0916C1CAD892900A74EE9 /* SendProjectFilesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B0916A1CAD892900A74EE9 /* SendProjectFilesWindowController.m */; };
 		B7B0916D1CAD892900A74EE9 /* SendProjectFilesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7B0916B1CAD892900A74EE9 /* SendProjectFilesWindowController.xib */; };
+		B7B80F661D7F15D20007765C /* image in Resources */ = {isa = PBXBuildFile; fileRef = B7B80F651D7F15D20007765C /* image */; };
+		B7D239EF1D10FD9000D9A71A /* UserInfoKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D239EE1D10FD9000D9A71A /* UserInfoKeys.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B71620461D153C9200F1FA4C /* HelpWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpWindowController.h; path = WindowController/HelpWindowController.h; sourceTree = "<group>"; };
+		B71620471D153C9200F1FA4C /* HelpWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpWindowController.m; path = WindowController/HelpWindowController.m; sourceTree = "<group>"; };
+		B71620481D153C9200F1FA4C /* HelpWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpWindowController.xib; path = WindowController/HelpWindowController.xib; sourceTree = "<group>"; };
+		B716204B1D191A4700F1FA4C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B72E13DE1CACE4B3006F9A52 /* XcodeBuddyPlugin.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeBuddyPlugin.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		B72E13E11CACE4B3006F9A52 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		B72E13E31CACE4B3006F9A52 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -53,6 +63,7 @@
 		B72E140E1CACE592006F9A52 /* XcodePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodePrivate.h; sourceTree = "<group>"; };
 		B72E14101CACE592006F9A52 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		B72E14111CACE592006F9A52 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		B75FA4FE1D13F0B100DCAEEE /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		B7B091561CAD7DDF00A74EE9 /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework; sourceTree = "<group>"; };
 		B7B091591CAD7EB600A74EE9 /* DeallocationObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeallocationObserver.h; sourceTree = "<group>"; };
 		B7B0915A1CAD7EB600A74EE9 /* DeallocationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeallocationObserver.m; sourceTree = "<group>"; };
@@ -65,6 +76,9 @@
 		B7B091691CAD892900A74EE9 /* SendProjectFilesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SendProjectFilesWindowController.h; path = WindowController/SendProjectFilesWindowController.h; sourceTree = "<group>"; };
 		B7B0916A1CAD892900A74EE9 /* SendProjectFilesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SendProjectFilesWindowController.m; path = WindowController/SendProjectFilesWindowController.m; sourceTree = "<group>"; };
 		B7B0916B1CAD892900A74EE9 /* SendProjectFilesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SendProjectFilesWindowController.xib; path = WindowController/SendProjectFilesWindowController.xib; sourceTree = "<group>"; };
+		B7B80F651D7F15D20007765C /* image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = image; sourceTree = "<group>"; };
+		B7D239ED1D10FD9000D9A71A /* UserInfoKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoKeys.h; sourceTree = "<group>"; };
+		B7D239EE1D10FD9000D9A71A /* UserInfoKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoKeys.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +100,8 @@
 		B72E13D51CACE4B3006F9A52 = {
 			isa = PBXGroup;
 			children = (
+				B7B80F651D7F15D20007765C /* image */,
+				B716204B1D191A4700F1FA4C /* README.md */,
 				B72E13E51CACE4B3006F9A52 /* XcodeBuddyPlugin */,
 				B72E13E01CACE4B3006F9A52 /* Frameworks */,
 				B72E13DF1CACE4B3006F9A52 /* Products */,
@@ -115,6 +131,7 @@
 		B72E13E51CACE4B3006F9A52 /* XcodeBuddyPlugin */ = {
 			isa = PBXGroup;
 			children = (
+				B7D239F61D13DEAB00D9A71A /* WindowController */,
 				B7B091581CAD7EB600A74EE9 /* Helper */,
 				B7B0915D1CAD7EB600A74EE9 /* JRSwizzle */,
 				B72E140C1CACE592006F9A52 /* XcodeHeaders */,
@@ -124,9 +141,7 @@
 				B72E13EA1CACE4B3006F9A52 /* XcodeBuddyPlugin.m */,
 				B72E13EF1CACE4B3006F9A52 /* Info.plist */,
 				B72E13E61CACE4B3006F9A52 /* Supporting Files */,
-				B7B091691CAD892900A74EE9 /* SendProjectFilesWindowController.h */,
-				B7B0916A1CAD892900A74EE9 /* SendProjectFilesWindowController.m */,
-				B7B0916B1CAD892900A74EE9 /* SendProjectFilesWindowController.xib */,
+				B75FA4FE1D13F0B100DCAEEE /* Image.xcassets */,
 			);
 			path = XcodeBuddyPlugin;
 			sourceTree = "<group>";
@@ -155,6 +170,8 @@
 				B72E14021CACE583006F9A52 /* Singleton.h */,
 				B72E14031CACE583006F9A52 /* XcodeTheme.h */,
 				B72E14041CACE583006F9A52 /* XcodeTheme.m */,
+				B7D239ED1D10FD9000D9A71A /* UserInfoKeys.h */,
+				B7D239EE1D10FD9000D9A71A /* UserInfoKeys.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -195,6 +212,19 @@
 				B7B0915F1CAD7EB600A74EE9 /* JRSwizzle.m */,
 			);
 			path = JRSwizzle;
+			sourceTree = "<group>";
+		};
+		B7D239F61D13DEAB00D9A71A /* WindowController */ = {
+			isa = PBXGroup;
+			children = (
+				B71620461D153C9200F1FA4C /* HelpWindowController.h */,
+				B71620471D153C9200F1FA4C /* HelpWindowController.m */,
+				B71620481D153C9200F1FA4C /* HelpWindowController.xib */,
+				B7B091691CAD892900A74EE9 /* SendProjectFilesWindowController.h */,
+				B7B0916A1CAD892900A74EE9 /* SendProjectFilesWindowController.m */,
+				B7B0916B1CAD892900A74EE9 /* SendProjectFilesWindowController.xib */,
+			);
+			name = WindowController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,7 +283,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B75FA4FF1D13F0B100DCAEEE /* Image.xcassets in Resources */,
+				B7B80F661D7F15D20007765C /* image in Resources */,
 				B72E13E81CACE4B3006F9A52 /* XcodeBuddyPlugin.xcscheme in Resources */,
+				B716204A1D153C9200F1FA4C /* HelpWindowController.xib in Resources */,
 				B7B0916D1CAD892900A74EE9 /* SendProjectFilesWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,7 +308,10 @@
 				B72E141A1CACE592006F9A52 /* GCDAsyncSocket.m in Sources */,
 				B72E14051CACE583006F9A52 /* ClientSocket.m in Sources */,
 				B7B0916C1CAD892900A74EE9 /* SendProjectFilesWindowController.m in Sources */,
+				B71620491D153C9200F1FA4C /* HelpWindowController.m in Sources */,
 				B7B091621CAD7EB600A74EE9 /* JRSwizzle.m in Sources */,
+				B716204C1D191A4700F1FA4C /* README.md in Sources */,
+				B7D239EF1D10FD9000D9A71A /* UserInfoKeys.m in Sources */,
 				B72E14071CACE583006F9A52 /* ConnectAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,8 +336,11 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "${HOME}";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -318,8 +357,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "~/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -340,10 +381,14 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "${HOME}";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -352,7 +397,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = "~/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -388,6 +436,7 @@
 				INFOPLIST_FILE = XcodeBuddyPlugin/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.crafthm.XcodeBuddyPlugin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xcplugin;
