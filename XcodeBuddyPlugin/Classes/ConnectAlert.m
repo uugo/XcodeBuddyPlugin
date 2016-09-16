@@ -95,11 +95,13 @@
     NSString * Port=[PortInputTextField.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if ([IP length]==0 || [Port length]==0)
         return;
-    if (clientSocketObject==nil|| (clientSocketObject.clientSocket !=nil && clientSocketObject.clientSocket.isConnected == NO)){
-        [clientSocketObject connectToHost:IP andPort:Port.intValue];
-    }
-    else {
-        [clientSocketObject disconnect];
+    if (clientSocketObject != nil) {
+        if (clientSocketObject.clientSocket != nil) {
+           if (clientSocketObject.clientSocket.isConnected == NO)
+               [clientSocketObject connectToHost:IP andPort:Port.intValue];
+            else
+                [clientSocketObject disconnect];
+        }
     }
 }
 

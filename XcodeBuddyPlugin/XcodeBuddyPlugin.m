@@ -119,9 +119,8 @@ NSInteger TagOfHostAddrList = 6;
 
 - (void) compareVersion:(NSBundle*)plugin {
     NSString *currentVersion = [plugin objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kLatestVersion];
+//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kLatestVersion];
     NSString *lastVersion = [[NSUserDefaults standardUserDefaults] stringForKey:kLatestVersion];
-    
     if (lastVersion == nil || [lastVersion compare:currentVersion options:NSNumericSearch] == NSOrderedDescending) {
         NSUserNotification *notification = [NSUserNotification new] ;
         notification.title = [NSString stringWithFormat:@"XcodeBuddyPlugin updated to %@",currentVersion];
@@ -192,8 +191,12 @@ NSInteger TagOfHostAddrList = 6;
         //添加曾经连接过的IP
         [[XcodeBuddyMenuItem submenu] addItem:[NSMenuItem separatorItem]];
         
-        hostarray=[[NSUserDefaults standardUserDefaults] objectForKey:kHostAddressList];
-        if (hostarray != nil) {
+        
+        hostarray = [[NSMutableArray alloc] init];
+        
+        NSArray* tArray =[[NSUserDefaults standardUserDefaults] objectForKey:kHostAddressList];
+        if (tArray != nil) {
+            [hostarray addObjectsFromArray:tArray];
             for (NSString *parray in hostarray){
                 NSMenuItem *mitem=[[NSMenuItem alloc] initWithTitle:parray action:@selector(doClickMenuItemAction:) keyEquivalent:@""];
                 [mitem setTarget:self];
@@ -399,6 +402,7 @@ NSInteger TagOfHostAddrList = 6;
     }
     NSString* addStr=[[NSString alloc] initWithFormat:@"%@:%d" ,ip,port ];
     NSUInteger count=[hostarray count];
+    NSLog(@"hostarray:%@",hostarray);
     if ([hostarray containsObject:addStr]== NO){
         if (count < MaxCountOfHostArray)
             [hostarray addObject:addStr];

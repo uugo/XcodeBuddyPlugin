@@ -9,6 +9,7 @@
 //#import <Foundation/NSError.h>
 #import "DVTUserNotificationCenter+XcodeBuddy.h"
 #import "JRSwizzle.h"
+#import "XcodeBuddyPlugin.h"
 #import <objc/runtime.h>
 
 
@@ -23,17 +24,17 @@
 
 - (BOOL)XcodeBuddy_userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification
 {
-//    if ([notification.userInfo[VariablesViewFullCopyNewVersionNotification] boolValue]) {
-//        return YES;
-//    }
+    if ([notification.userInfo[XcodeBuddyPluginNewVersionNotification] boolValue]) {
+        return YES;
+    }
     return [self XcodeBuddy_userNotificationCenter:center shouldPresentNotification:notification];
 }
 
 
 - (void)XcodeBuddy_userNotificationCenter:(NSUserNotificationCenter *) center didActivateNotification:(NSUserNotification *) notification{
-//    if ([notification.userInfo[]] boolValue) {
-//        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@""]];
-//    }
+    if ([notification.userInfo[XcodeBuddyPluginNewVersionNotification] boolValue]) {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/uugo/XcodeBuddyPlugin#release-notes"]];
+    }
     [self XcodeBuddy_userNotificationCenter:center didActivateNotification:notification];
 }
 

@@ -13,10 +13,12 @@
 
 NSString* strSocketOffLineByUser=@"SocketOfflineByUser";
 NSString* strSocketOffLineByServer=@"SocketOfflineByServer";
+NSInteger HeartBeatDelay=6;
 
 @interface ClientSocket()
 
 @property (nonatomic,retain) NSTimer * connectTimer;
+
 
 @end
 
@@ -46,7 +48,7 @@ DEFINE_SINGLETON_FOR_CLASS(ClientSocket)
         self.clientSocket.userData=strSocketOffLineByServer;
     }
     else {
-        NSLog(@"clientSocket connectToHost failed:%@",err);
+//        NSLog(@"clientSocket connectToHost failed:%@",err);
         return false;
     }
     self.hostIP=IP;
@@ -66,11 +68,11 @@ DEFINE_SINGLETON_FOR_CLASS(ClientSocket)
 #pragma mark - GCDAsyncSocket Delegate
 - (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
 {
-    NSLog(@"didConnectToHost");
-//    self.connectTimer=[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(heartbeatToSocket) userInfo:nil repeats:YES];
+//    NSLog(@"didConnectToHost");
+//    self.connectTimer=[NSTimer scheduledTimerWithTimeInterval:HeartBeatDelay target:self selector:@selector(heartbeatToSocket) userInfo:nil repeats:YES];
 //    [self.connectTimer fire];
     //TODO:update to using this plugin firstly,excute this
-    [XcodeTheme synXcodeThemeFile:sock];
+//    [XcodeTheme synXcodeThemeFile:sock];
     [clientSocket readDataWithTimeout:-1 tag:0];
     [XcodeBuddyPlugin addToHostList:host port:port];
     [disconnectMenuItem setAction:@selector(disconnect)];
@@ -89,14 +91,14 @@ DEFINE_SINGLETON_FOR_CLASS(ClientSocket)
 }
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err{
-    NSLog(@"socketDidDisconnect:%@(%@:%d),error:%@",sock.userData,clientSocket.connectedHost,clientSocket.connectedPort,err);
+//    NSLog(@"socketDidDisconnect:%@(%@:%d),error:%@",sock.userData,sock.connectedHost,sock.connectedPort,err);
     if (connectAlert)
         [connectAlert alertUIChange];
     if ((self.hostIP.length != 0) && (self.hostPort != 0)) {
         NSString* addStr=[[NSString alloc] initWithFormat:@"%@:%d" ,self.hostIP,self.hostPort];
         [XcodeBuddyPlugin updateHostListMenuItemState:addStr state:NO];
     }
-    [disconnectMenuItem setAction:nil];
+//    [disconnectMenuItem setAction:nil];
     if ([sock.userData isEqualToString: @"SocketOfflineByServer"]){
         //        [self linkServer:self.socketHost andPort:self.socketPort];
     }
@@ -108,11 +110,11 @@ DEFINE_SINGLETON_FOR_CLASS(ClientSocket)
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
-    NSLog(@"didReadData,sock=%@,tag=%ld",sock,tag);
+//    NSLog(@"didReadData,sock=%@,tag=%ld",sock,tag);
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag{
-    NSLog(@"didWriteDataWithTag,sock=%@,tag=%ld",sock,tag);
+//    NSLog(@"didWriteDataWithTag,sock=%@,tag=%ld",sock,tag);
 }
 
 

@@ -40,8 +40,13 @@ NSString const *DisconnectedString=@"XcodeBuddy can not connect any server(xcBud
 
 
 - (void)insertStringToTextView:(NSString*) str {
-    NSMutableString *stringOfTextView=[[self.sendedFilelistTextView textStorage] mutableString];
-    [stringOfTextView appendString:[[NSString alloc] initWithFormat:@"%@%@",str,@"\n"]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSMutableString *stringOfTextView=[[self.sendedFilelistTextView textStorage] mutableString];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm:SS"];
+        NSString* dateTime = [formatter stringFromDate:[NSDate date]];
+        [stringOfTextView appendString:[[NSString alloc] initWithFormat:@"[%@]:%@%@",dateTime, str,@"\n"]];
+    });
 }
 
 - (void)startSending {
@@ -68,6 +73,7 @@ NSString const *DisconnectedString=@"XcodeBuddy can not connect any server(xcBud
         if (path == nil){
             return;
         }
+        [NSThread sleepForTimeInterval:0.5f];
         [self startSending];
         [self sendDirectory:path];
         [self completeSending:fileIndex];
@@ -101,9 +107,10 @@ static NSInteger fileIndex=0;
             else {
                 if ([CanSendedFileExtension containsObject: filePath.pathExtension]) {
                     [XcodeBuddyPlugin sendFile:filePath Type:kProjectFiles];
-                    //                    NSLog(@"send file:%@",filePath);
+                    NSLog(@"send file:%@",filePath);
                     fileIndex++;
                     [self insertStringToTextView:[[NSString alloc] initWithFormat:@"%ld.%@",fileIndex,[filePath.path stringByReplacingOccurrencesOfString:workSpacePath withString:@""] ]];
+                    [NSThread sleepForTimeInterval:0.05f];
                 }
             }
         }
