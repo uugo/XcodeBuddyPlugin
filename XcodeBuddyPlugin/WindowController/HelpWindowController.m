@@ -23,7 +23,7 @@
     if (lastVersion != nil)
         _currentVersion.stringValue = lastVersion;
     else
-        _currentVersion.stringValue = @"1.0";
+        _currentVersion.stringValue = @"2.0";
     [_helpButton setAction:@selector(onClickHelpButton)];
     [_okButton setAction:@selector(onClickOKButton)];
 }
