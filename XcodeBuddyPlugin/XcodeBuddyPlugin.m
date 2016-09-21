@@ -121,7 +121,7 @@ NSInteger TagOfHostAddrList = 6;
     NSString *currentVersion = [plugin objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
 //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kLatestVersion];
     NSString *lastVersion = [[NSUserDefaults standardUserDefaults] stringForKey:kLatestVersion];
-    if (lastVersion == nil || [lastVersion compare:currentVersion options:NSNumericSearch] == NSOrderedDescending) {
+    if (lastVersion == nil || [currentVersion compare: lastVersion options:NSNumericSearch] == NSOrderedDescending) {
         NSUserNotification *notification = [NSUserNotification new] ;
         notification.title = [NSString stringWithFormat:@"XcodeBuddyPlugin updated to %@",currentVersion];
         notification.informativeText = @"View realease notes";
